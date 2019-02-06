@@ -30,3 +30,11 @@
     transform: rotate(360deg);
   }
 }
+
+.custom-segment {
+  min-height: 100vh
+}
+
+.custom-img {
+  max-height: 20vh
+}
