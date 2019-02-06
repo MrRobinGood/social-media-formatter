@@ -6,7 +6,9 @@ import { Container, Form, TextArea, Button,
   Divider,
   Grid,
   Header,
+  Message,
   Icon,
+  Table,
   Image,
   List,
   Menu,
@@ -16,6 +18,76 @@ import { Container, Form, TextArea, Button,
   Visibility, } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 
+function insertAtCursor(myField, myValue) {
+  //MOZILLA and others
+  if (myField.selectionStart || myField.selectionStart == '0') {
+      var startPos = myField.selectionStart;
+      var endPos = myField.selectionEnd;
+      myField.value = myField.value.substring(0, startPos)
+          + myValue
+          + myField.value.substring(endPos, myField.value.length);
+  } else {
+      myField.value += myValue;
+  }
+}
+
+
+const TableCell = (props) => (
+            <Table.Cell id={props.id}
+              onClick={(e)=> props.handleClick(props.id)}
+              >
+              {props.children}
+            </Table.Cell>
+)
+
+
+// jsx-a11y/accessible-emoji
+class EmoticonsGrid extends Component {
+
+  handleClick(id) {
+    var str = document.getElementById(id).innerHTML
+    console.log(str)
+    var box = document.getElementById("formatter")
+    // var cursorPosition = document.getElementById('formatter').prop("selectionStart")
+    // var cursorPosition = getCursorPos(document.getElementById('formatter'))
+    insertAtCursor(box, str)
+  }
+
+  // <Table.Cell id="hearth"
+  // onClick={(e)=> this.handleClick(e.target.id)}
+  // >🤩</Table.Cell>
+
+
+  render() {
+    return (
+      <Table celled>
+        <Table.Body>
+          <Table.Row>
+            <TableCell id="uno" handleClick={this.handleClick}>
+              🤩
+            </TableCell>
+            <TableCell id="due" handleClick={this.handleClick}>🤓</TableCell>
+            <TableCell id="tre" handleClick={this.handleClick}>🤔</TableCell>
+          </Table.Row>
+          <Table.Row>
+            <TableCell id="quattro" handleClick={this.handleClick}>🥳</TableCell>
+            <TableCell id="cinque" handleClick={this.handleClick}>🥶</TableCell>
+            <TableCell id="sei" handleClick={this.handleClick}>🥵</TableCell>
+          </Table.Row>
+          <Table.Row>
+            <TableCell id="sette" handleClick={this.handleClick}>🤦‍</TableCell>
+            <TableCell id="otto" handleClick={this.handleClick}>🧛‍</TableCell>
+            <TableCell id="nove" handleClick={this.handleClick}>🛵</TableCell>
+          </Table.Row>
+        </Table.Body>
+      </Table>
+    )
+  }
+}
+
+
+
+
 class HomepageHeading extends Component {
   constructor() {
     super()
@@ -23,9 +95,9 @@ class HomepageHeading extends Component {
   }
 
   copyToClipboard(el) {
-    var str = document.getElementById("demo").value
+    var str = document.getElementById("formatter").value
     str = str.replace(/(?:\r\n|\r|\n)/g, "\u2063\n")
-      document.getElementById("demo").value = str
+      document.getElementById("formatter").value = str
       // resolve the element
       el = (typeof el === 'string') ? document.querySelector(el) : el
       // handle iOS as a special case
@@ -61,10 +133,10 @@ class HomepageHeading extends Component {
     return (
       
       <Container text>
-        <img src="/images/robin.png" className="custom-img"/>
+        <br/>
         <Header
           as='h1'
-          content='Robin Good'
+          content='Social Media Formatter'
           inverted
           style={{
             fontSize: this.props.mobile ? '2em' : '4em',
@@ -74,20 +146,38 @@ class HomepageHeading extends Component {
           }}
         />
         <Header
-          as='h2'
-          content='whatever you write here will keep its format in twitter and instagram'
+          as='h6'
+          content=''
           inverted
           style={{
-            fontSize: this.props.mobile ? '1.5em' : '1.7em',
+            fontSize: this.props.mobile ? '0.7em' : '0.9em',
             fontWeight: 'normal',
-            marginTop: this.props.mobile ? '0.5em' : '1.5em',
+            marginTop: this.props.mobile ? '0em' : '0em',
           }}
-        />
-        <Form onSubmit={() => this.copyToClipboard('.js-copytextarea')}>
-          <TextArea placeholder='' id="demo" className="js-copytextarea"  style={{ minHeight: 100 }} />
-        </Form>
+        >
+        by Robin Good <Image circular src='/images/robin-icon.png' />
+        </Header>
         <br/>
-        <button className="ui primary button block" onClick={() => this.copyToClipboard('.js-copytextarea')}>Copy to Clipboard</button>
+        <Message color='black'>
+          <p>
+            Questo strumento consente di formattare i testi per Instagram, Facebook e diversi altri social media permettendo di lasciare
+            spazi vuoti fra una riga e l'altra
+          </p>
+        </Message>
+
+        <Grid>
+        <Grid.Column width={13}>
+          <Form onSubmit={() => this.copyToClipboard('.js-copytextarea')}>
+            <TextArea placeholder='' id="formatter" className="js-copytextarea"  style={{ minHeight: 150 }} />
+            <br/>
+            <br/>
+            <button className="ui primary button block" onClick={() => this.copyToClipboard('.js-copytextarea')}>Formatta e copia</button>
+          </Form>
+        </Grid.Column>
+        <Grid.Column width={3}>
+          <EmoticonsGrid />
+        </Grid.Column>
+      </Grid>
       </Container>)
   }
 }
@@ -141,15 +231,6 @@ class DesktopContainer extends Component {
                 <Menu.Item as='a'>Link</Menu.Item>
                 <Menu.Item as='a'>Link2</Menu.Item>
                 <Menu.Item as='a'>Link3</Menu.Item>
-                { /*<Menu.Item position='right'>
-                  <Button as='a' inverted={!fixed}>
-                    Log in
-                  </Button>
-                  <Button as='a' inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em' }}>
-                    Sign Up
-                  </Button>
-                  </Menu.Item>*/
-                }
               </Container>
             </Menu>
             <HomepageHeading />
