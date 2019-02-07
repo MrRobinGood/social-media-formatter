@@ -8,6 +8,7 @@ import { Container, Form, TextArea, Button,
   Header,
   Message,
   Icon,
+  Step,
   Table,
   Image,
   List,
@@ -85,6 +86,36 @@ class EmoticonsGrid extends Component {
   }
 }
 
+const Instructions = () => (
+  <div>
+  <hr/>
+  <h4>Istruzioni</h4>
+  <Step.Group stackable='tablet'>
+    <Step>
+      <Step.Content>
+        <Step.Title>1) Scrivi</Step.Title>
+        <Step.Description>
+          Scrivi il contenuto del tuo post qua in alto e formattalo come vuoi. 
+        </Step.Description>
+      </Step.Content>
+    </Step>
+    <Step>
+      <Step.Content>
+        <Step.Title>2) Formatta e Copia</Step.Title>
+        <Step.Description>
+          Quando hai finito di scrivere fai click sul bottone blu per formattare il testo e copiarlo.
+        </Step.Description>
+      </Step.Content>
+    </Step>
+    <Step>
+      <Step.Content>
+        <Step.Title>3) Pubblica</Step.Title>
+        <Step.Description>Nel social media di tua scelta semplicemente incolla e il messaggio rimarra formattato.</Step.Description>
+      </Step.Content>
+    </Step>
+  </Step.Group>
+  </div>
+)
 
 
 
@@ -126,7 +157,6 @@ class HomepageHeading extends Component {
 
       // execute copy command
       document.execCommand('copy')
-      alert("Success! The converted caption has been copied to your clipboard, go paste it into Instagram to experience clean and beautiful line-breaks!")
     }
 
   render() {
@@ -167,7 +197,10 @@ class HomepageHeading extends Component {
 
         <Grid>
         <Grid.Column width={13}>
-          <Form onSubmit={() => this.copyToClipboard('.js-copytextarea')}>
+          <Form onSubmit={() => {
+            this.copyToClipboard('.js-copytextarea')
+            alert('Testo copiato con successo!')
+          }}>
             <TextArea placeholder='' id="formatter" className="js-copytextarea"  style={{ minHeight: 150 }} />
             <br/>
             <br/>
@@ -217,7 +250,8 @@ class DesktopContainer extends Component {
             className="custom-segment"
             vertical
           >
-            <Menu
+           {/**
+          <Menu
               fixed={fixed ? 'top' : null}
               inverted={!fixed}
               pointing={!fixed}
@@ -233,7 +267,9 @@ class DesktopContainer extends Component {
                 <Menu.Item as='a'>Link3</Menu.Item>
               </Container>
             </Menu>
+          */} 
             <HomepageHeading />
+            <Instructions />
           </Segment>
         </Visibility>
 
@@ -263,6 +299,9 @@ class MobileContainer extends Component {
         getWidth={getWidth}
         maxWidth={Responsive.onlyMobile.maxWidth}
       >
+
+        {/**
+        
         <Sidebar
           as={Menu}
           animation='push'
@@ -278,6 +317,9 @@ class MobileContainer extends Component {
           <Menu.Item as='a'>Link2</Menu.Item>
           <Menu.Item as='a'>Link3</Menu.Item>
         </Sidebar>
+        
+        */}
+        
 
         <Sidebar.Pusher dimmed={sidebarOpened}>
           <Segment
@@ -303,6 +345,7 @@ class MobileContainer extends Component {
     </Menu> */}
             </Container>
             <HomepageHeading mobile />
+            <Instructions />
           </Segment>
 
         </Sidebar.Pusher>
