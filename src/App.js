@@ -71,7 +71,7 @@ class EmoticonsGrid extends Component {
             <TableCell id="tre" handleClick={this.handleClick}>🤔</TableCell>
           </Table.Row>
           <Table.Row>
-            <TableCell id="quattro" handleClick={this.handleClick}>🥳</TableCell>
+            <TableCell id="quattro" handleClick={this.handleClick}>😂</TableCell>
             <TableCell id="cinque" handleClick={this.handleClick}>🥶</TableCell>
             <TableCell id="sei" handleClick={this.handleClick}>🥵</TableCell>
           </Table.Row>
@@ -90,7 +90,7 @@ const Instructions = () => (
   <div>
   <hr/>
   <h4>Istruzioni</h4>
-  <Step.Group stackable='tablet'>
+  <Step.Group stackable='tablet' widths={3}>
     <Step>
       <Step.Content>
         <Step.Title>1) Scrivi</Step.Title>
