@@ -64,21 +64,19 @@ class EmoticonsGrid extends Component {
       <Table celled>
         <Table.Body>
           <Table.Row>
-            <TableCell id="uno" handleClick={this.handleClick}>
-              🤩
-            </TableCell>
-            <TableCell id="due" handleClick={this.handleClick}>🤓</TableCell>
-            <TableCell id="tre" handleClick={this.handleClick}>🤔</TableCell>
+            <TableCell id="uno" handleClick={this.handleClick}>•</TableCell>
+            <TableCell id="due" handleClick={this.handleClick}>✅</TableCell>
+            <TableCell id="tre" handleClick={this.handleClick}>⚠</TableCell>
           </Table.Row>
           <Table.Row>
-            <TableCell id="quattro" handleClick={this.handleClick}>😂</TableCell>
-            <TableCell id="cinque" handleClick={this.handleClick}>🥶</TableCell>
-            <TableCell id="sei" handleClick={this.handleClick}>🥵</TableCell>
+            <TableCell id="quattro" handleClick={this.handleClick}>➡</TableCell>
+            <TableCell id="cinque" handleClick={this.handleClick}>⭕</TableCell>
+            <TableCell id="sei" handleClick={this.handleClick}>✴</TableCell>
           </Table.Row>
           <Table.Row>
-            <TableCell id="sette" handleClick={this.handleClick}>🤦‍</TableCell>
-            <TableCell id="otto" handleClick={this.handleClick}>🧛‍</TableCell>
-            <TableCell id="nove" handleClick={this.handleClick}>🛵</TableCell>
+            <TableCell id="sette" handleClick={this.handleClick}>🔴</TableCell>
+            <TableCell id="otto" handleClick={this.handleClick}>▪</TableCell>
+            <TableCell id="nove" handleClick={this.handleClick}>▶</TableCell>
           </Table.Row>
         </Table.Body>
       </Table>
@@ -90,27 +88,27 @@ const Instructions = () => (
   <div>
   <hr/>
   <h4>Istruzioni</h4>
-  <Step.Group stackable='tablet' widths={3}>
+  <Step.Group stackable='tablet' >
     <Step>
       <Step.Content>
         <Step.Title>1) Scrivi</Step.Title>
         <Step.Description>
-          Scrivi il contenuto del tuo post qua in alto e formattalo come vuoi. 
+        Inserisci il contenuto del tuo post <br/>  nell’apposito box e formattalo come desideri. 
         </Step.Description>
       </Step.Content>
     </Step>
     <Step>
       <Step.Content>
-        <Step.Title>2) Formatta e Copia</Step.Title>
+        <Step.Title>2) Converti</Step.Title>
         <Step.Description>
-          Quando hai finito di scrivere fai click sul bottone blu per formattare il testo e copiarlo.
+        Clicca il bottone “Formatta & Copia” <br/> per convertire il tuo testo e copiarlo.
         </Step.Description>
       </Step.Content>
     </Step>
     <Step>
       <Step.Content>
-        <Step.Title>3) Pubblica</Step.Title>
-        <Step.Description>Nel social media di tua scelta semplicemente incolla e il messaggio rimarra formattato.</Step.Description>
+        <Step.Title>3) Incolla</Step.Title>
+        <Step.Description>Vai sul social dove <br/> intendi pubblicare e “incolla”.</Step.Description>
       </Step.Content>
     </Step>
   </Step.Group>
@@ -190,8 +188,8 @@ class HomepageHeading extends Component {
         <br/>
         <Message color='black'>
           <p>
-            Questo strumento consente di formattare i testi per Instagram, Facebook e diversi altri social media permettendo di lasciare
-            spazi vuoti fra una riga e l'altra
+          Formatta i testi per Instagram, Facebook e altri social <br/>
+          potendo mantenere spaziature e righe vuote fra paragrafi
           </p>
         </Message>
 
@@ -199,18 +197,19 @@ class HomepageHeading extends Component {
         <Grid.Column width={13}>
           <Form onSubmit={() => {
             this.copyToClipboard('.js-copytextarea')
-            alert('Testo copiato con successo!')
+            alert('Il tuo testo *formattato* è ora pronto per essere incollato' +
+              'nel tuo social preferito.')
           }}>
             <TextArea placeholder='' id="formatter" className="js-copytextarea"  style={{ minHeight: 150 }} />
             <br/>
             <br/>
-            <button className="ui primary button block" onClick={() => this.copyToClipboard('.js-copytextarea')}>Formatta e copia</button>
           </Form>
         </Grid.Column>
         <Grid.Column width={3}>
           <EmoticonsGrid />
         </Grid.Column>
       </Grid>
+      <button className="ui primary button block" onClick={() => this.copyToClipboard('.js-copytextarea')}>Formatta e copia</button>
       </Container>)
   }
 }
