@@ -46,7 +46,7 @@ const TableCell = (props) => (
 class EmoticonsGrid extends Component {
 
   handleClick(id) {
-    var str = document.getElementById(id).innerHTML
+    var str = document.getElementById(id).innerText
     console.log(str)
     var box = document.getElementById("formatter")
     // var cursorPosition = document.getElementById('formatter').prop("selectionStart")
@@ -64,19 +64,37 @@ class EmoticonsGrid extends Component {
       <Table celled>
         <Table.Body>
           <Table.Row>
-            <TableCell id="uno" handleClick={this.handleClick}>•</TableCell>
-            <TableCell id="due" handleClick={this.handleClick}>✅</TableCell>
-            <TableCell id="tre" handleClick={this.handleClick}>⚠</TableCell>
+            <TableCell id="uno" className="emoji" handleClick={this.handleClick}>
+              <span className="emoji">•</span>
+            </TableCell>
+            <TableCell id="due" className="emoji" handleClick={this.handleClick}>
+              <span className="emoji">✅</span> 
+            </TableCell>
+            <TableCell id="tre" className="emoji" handleClick={this.handleClick}>
+              <span className="emoji">⚠</span>
+            </TableCell>
           </Table.Row>
           <Table.Row>
-            <TableCell id="quattro" handleClick={this.handleClick}>➡</TableCell>
-            <TableCell id="cinque" handleClick={this.handleClick}>⭕</TableCell>
-            <TableCell id="sei" handleClick={this.handleClick}>✴</TableCell>
+            <TableCell id="quattro" className="emoji" handleClick={this.handleClick}>
+              <span className="emoji">➡</span>
+            </TableCell>
+            <TableCell id="cinque" className="emoji" handleClick={this.handleClick}>
+              <span className="emoji">⭕</span> 
+            </TableCell>
+            <TableCell id="sei" className="emoji" handleClick={this.handleClick}>
+              <span className="emoji">✴</span>
+            </TableCell>
           </Table.Row>
           <Table.Row>
-            <TableCell id="sette" handleClick={this.handleClick}>🔴</TableCell>
-            <TableCell id="otto" handleClick={this.handleClick}>▪</TableCell>
-            <TableCell id="nove" handleClick={this.handleClick}>▶</TableCell>
+            <TableCell id="sette" className="emoji" handleClick={this.handleClick}>
+              <span className="emoji">🔴</span>
+            </TableCell>
+            <TableCell id="otto" className="emoji" handleClick={this.handleClick}>
+              <span className="emoji">▪</span>
+            </TableCell>
+            <TableCell id="nove" className="emoji" handleClick={this.handleClick}>
+              <span className="emoji">▶</span>
+            </TableCell>
           </Table.Row>
         </Table.Body>
       </Table>
