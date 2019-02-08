@@ -104,7 +104,7 @@ class EmoticonsGrid extends Component {
 
 const Instructions = () => (
   <div>
-  <hr/>
+  <br/>
   <h4>Istruzioni</h4>
   <Step.Group stackable='tablet' >
     <Step>
