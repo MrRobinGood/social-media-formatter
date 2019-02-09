@@ -176,7 +176,7 @@ class HomepageHeading extends Component {
       // execute copy command
       document.execCommand('copy')
 
-      alert('Il tuo testo *formattato* è ora pronto per essere incollato' +
+      alert('Il tuo testo *formattato* è ora pronto per essere incollato ' +
       'nel tuo social preferito.')
     }
 
@@ -198,7 +198,6 @@ class HomepageHeading extends Component {
         />
         <Header
           as='h6'
-          content=''
           inverted
           style={{
             fontSize: this.props.mobile ? '0.7em' : '0.9em',
