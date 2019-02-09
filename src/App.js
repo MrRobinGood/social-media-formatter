@@ -27,6 +27,8 @@ function insertAtCursor(myField, myValue) {
       myField.value = myField.value.substring(0, startPos)
           + myValue
           + myField.value.substring(endPos, myField.value.length);
+          myField.focus();
+          myField.selectionEnd = endPos + 1;
   } else {
       myField.value += myValue;
   }
@@ -65,7 +67,7 @@ class EmoticonsGrid extends Component {
         <Table.Body>
           <Table.Row>
             <TableCell id="uno" className="emoji" handleClick={this.handleClick}>
-              <span className="emoji">•</span>
+              <span className="emoji-punto">•</span>
             </TableCell>
             <TableCell id="due" className="emoji" handleClick={this.handleClick}>
               <span className="emoji">✅</span> 
@@ -173,6 +175,9 @@ class HomepageHeading extends Component {
 
       // execute copy command
       document.execCommand('copy')
+
+      alert('Il tuo testo *formattato* è ora pronto per essere incollato' +
+      'nel tuo social preferito.')
     }
 
   render() {
@@ -215,8 +220,6 @@ class HomepageHeading extends Component {
         <Grid.Column width={13}>
           <Form onSubmit={() => {
             this.copyToClipboard('.js-copytextarea')
-            alert('Il tuo testo *formattato* è ora pronto per essere incollato' +
-              'nel tuo social preferito.')
           }}>
             <TextArea placeholder='' id="formatter" className="js-copytextarea"  style={{ minHeight: 150 }} />
             <br/>
