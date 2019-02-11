@@ -17,10 +17,15 @@ import { Container, Form, TextArea, Button,
   Segment,
   Sidebar,
   Visibility, } from 'semantic-ui-react'
-import 'semantic-ui-css/semantic.min.css'
-import Emojify from 'react-emojione';
-import {emojify} from 'react-emojione';
 
+import Alert from 'react-s-alert';
+
+
+import 'semantic-ui-css/semantic.min.css'
+import 'react-s-alert/dist/s-alert-default.css';
+
+// optional - you can choose the effect you want
+import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 
 
 function insertAtCursor(myField, myValue) {
@@ -150,6 +155,7 @@ class HomepageHeading extends Component {
   }
 
   copyToClipboard(el) {
+
     var str = document.getElementById("formatter").value
     str = str.replace(/(?:\r\n|\r|\n)/g, "\u2063\n")
       document.getElementById("formatter").value = str
@@ -182,14 +188,20 @@ class HomepageHeading extends Component {
       // execute copy command
       document.execCommand('copy')
 
-      alert('Il tuo testo *formattato* è ora pronto per essere incollato ' +
-      'nel tuo social preferito.')
+      Alert.success('Il tuo testo *formattato* è ora pronto per essere incollato ' +
+      'nel tuo social preferito.',{
+        effect: 'scale',
+        beep: false,
+        timeout: 3000,
+        // offset: 100
+      }) 
     }
 
   render() {
     return (
       
       <Container text>
+      <Alert position='top' />
         <br/>
         <Header
           as='h1'
