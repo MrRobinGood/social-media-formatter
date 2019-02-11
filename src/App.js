@@ -18,6 +18,10 @@ import { Container, Form, TextArea, Button,
   Sidebar,
   Visibility, } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
+import Emojify from 'react-emojione';
+import {emojify} from 'react-emojione';
+
+
 
 function insertAtCursor(myField, myValue) {
   //MOZILLA and others
@@ -27,11 +31,13 @@ function insertAtCursor(myField, myValue) {
       myField.value = myField.value.substring(0, startPos)
           + myValue
           + myField.value.substring(endPos, myField.value.length);
-          myField.focus();
-          myField.selectionEnd = endPos + 1;
+          
   } else {
       myField.value += myValue;
   }
+  myField.selectionEnd = endPos + 1;
+  myField.blur();
+  myField.focus();
 }
 
 
@@ -220,7 +226,13 @@ class HomepageHeading extends Component {
           <Form onSubmit={() => {
             this.copyToClipboard('.js-copytextarea')
           }}>
-            <TextArea placeholder='' id="formatter" className="js-copytextarea"  style={{ minHeight: 150 }} />
+            
+              <TextArea 
+                placeholder='' 
+                id="formatter" 
+                className="js-copytextarea textemoji"  
+                style={{ minHeight: 150 }} >
+                </TextArea>
             <br/>
             <br/>
           </Form>

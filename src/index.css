@@ -1,3 +1,9 @@
+/* @font-face {
+  font-family: 'MyFont';
+  src: local('MyFont'), url(fonts/OpenSansEmoji.ttf) format('ttf');
+}
+ */
+
 body {
   margin: 0;
   padding: 0;
