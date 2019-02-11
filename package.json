@@ -3,10 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "emoji-picker-textfield": "^0.2.0",
-    "emojionearea": "^3.4.1",
-    "jquery": "^3.3.1",
-    "jquery.emojiarea.js": "^0.1.8-beta",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-emojione": "^5.0.1",
