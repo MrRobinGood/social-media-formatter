@@ -155,7 +155,6 @@ class HomepageHeading extends Component {
   }
 
   copyToClipboard(el) {
-
     var str = document.getElementById("formatter").value
     str = str.replace(/(?:\r\n|\r|\n)/g, "\u2063\n")
       document.getElementById("formatter").value = str
