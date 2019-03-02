@@ -64,7 +64,7 @@ class EmoticonsGrid extends Component {
     var box = document.getElementById("formatter")
     // var cursorPosition = document.getElementById('formatter').prop("selectionStart")
     // var cursorPosition = getCursorPos(document.getElementById('formatter'))
-    insertAtCursor(box, str)
+    insertAtCursor(box, str + ' ')
   }
 
   // <Table.Cell id="hearth"
